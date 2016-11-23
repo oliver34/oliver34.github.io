@@ -90,28 +90,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      <!-- Table of Contents -->
-      
-      <p>今天遇到一个需求:$scope中一些特定的变量改变的时候，需要触发相应的事件。搜索一下，了解到<code>AngularJS</code>一个scope函数——<code>$watch</code></p>
+        <p>今天遇到一个需求:$scope中一些特定的变量改变的时候，需要触发相应的事件。搜索一下，了解到<code>AngularJS</code>一个scope函数——<code>$watch</code></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>$watch</code> 是scope自带的函数，用于监听模型变化，当你的模型部分发生变化时它会通知你。意思就是它可以帮助我们在每个scope中监视其中的变量变化。</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>$scope.$watch(watchExpression, listener, objectEquality);  </p>
-<p>参数说明：  </p>
-<ul>
-<li><strong>watchExpression</strong>：监听的对象，它可以是一个$scope中的变量,或函数如function(){return $scope.name}。</li>
-</ul>
-<ul>
-<li><strong>listener</strong>:当watchExpression变化时会被调用的函数或者表达式,它接收3个参数：newValue(新值), oldValue(旧值), scope(作用域的引用)</li>
-</ul>
-<ul>
-<li><strong>objectEquality</strong>：是否深度监听，如果设置为true,它告诉Angular检查所监控的对象中每一个属性的变化. 如果你希望监控数组的个别元素或者对象的属性而不是一个普通的值, 那么你应该使用它</li>
-</ul>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$scope.value = <span class="string">"value1"</span>;</div><div class="line">$scope.$watch(<span class="string">'value'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newValue, oldValue, scope</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(newValue, oldValue);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">$timeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">	$scope.value = <span class="string">"value2"</span>;</div><div class="line"></div><div class="line">&#125;,<span class="number">1000</span>);</div><div class="line"></div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
-<h2 id="如何一次监听多个值发生变化"><a href="#如何一次监听多个值发生变化" class="headerlink" title="如何一次监听多个值发生变化"></a>如何一次监听多个值发生变化</h2><p>有时候我们需要监听多个值的变化，但是太多$watch将会导致性能问题。这时候我们就要用到<code>$watch()</code>第三个参数，将多个值放到同一对象之中，进行深度监听。<br>例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$scope.values=&#123;&#125;;</div><div class="line">$scope.values.value1 = <span class="string">'value1'</span>;</div><div class="line">$scope.values.value2 = <span class="string">'value2'</span>;</div><div class="line">$scope.$watch(<span class="string">"object"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      .....</div><div class="line">&#125;,<span class="literal">true</span>);</div><div class="line"></div><div class="line">$timeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">	$scope.value1 = <span class="string">"value2"</span>;</div><div class="line">	$scope.value2 = <span class="string">"value1"</span>;</div><div class="line"></div><div class="line">&#125;,<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
-
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>$scope.$watch(watchExpression, listener, objectEquality);<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/23/AngularJS之$watch/#more">更多</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/11/23/AngularJS之$watch/" data-id="civur81370003hghhprrexsmq" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/11/23/AngularJS之$watch/" data-id="civurgnmu000jl8hh67em6eum" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/11/23/AngularJS之$watch/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/11/23/AngularJS之$watch/">评论</a>
@@ -161,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/10/31/gulp+browserify 构建react开发环境/" data-id="civur81560009hghht571fb9k" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/10/31/gulp+browserify 构建react开发环境/" data-id="civurgnki0006l8hh6jdztttq" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/10/31/gulp+browserify 构建react开发环境/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/10/31/gulp+browserify 构建react开发环境/">评论</a>
@@ -207,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/10/18/2048小游戏/" data-id="civur812e0001hghh61f3vcdi" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/10/18/2048小游戏/" data-id="civurgnii0001l8hh0s6s2gxd" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/10/18/2048小游戏/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/10/18/2048小游戏/">评论</a>
@@ -259,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/10/16/前端学习参考/" data-id="civur816v000fhghhryqpqleg" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/10/16/前端学习参考/" data-id="civurgnm0000dl8hh5pg3coc2" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/10/16/前端学习参考/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/10/16/前端学习参考/">评论</a>
@@ -305,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/09/20/前端知识框架/" data-id="civur8175000hhghhebfypals" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/09/20/前端知识框架/" data-id="civurgnm9000fl8hhmqs4yl4l" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/09/20/前端知识框架/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/09/20/前端知识框架/">评论</a>
@@ -352,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/09/19/创建对象的三种模式/" data-id="civur816e000dhghhvq53eif4" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/09/19/创建对象的三种模式/" data-id="civurgnlq000cl8hhpy9wmjqy" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/09/19/创建对象的三种模式/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/09/19/创建对象的三种模式/">评论</a>
@@ -401,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/09/08/js作用域和作用域链/" data-id="civur814x0008hghhdhqbjc00" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/09/08/js作用域和作用域链/" data-id="civurgnl50008l8hh1i6el2rs" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/09/08/js作用域和作用域链/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/09/08/js作用域和作用域链/">评论</a>
@@ -451,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/08/28/templateUrl CORS错误/" data-id="civur8165000chghhea0taixz" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/08/28/templateUrl CORS错误/" data-id="civurgnld0009l8hhxp3klld3" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/08/28/templateUrl CORS错误/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/08/28/templateUrl CORS错误/">评论</a>
@@ -505,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/08/21/AngularJS-PhoneCat/" data-id="civur814e0006hghhe4nh9am1" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/08/21/AngularJS-PhoneCat/" data-id="civurgnje0003l8hhpbevo8cp" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/08/21/AngularJS-PhoneCat/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/08/21/AngularJS-PhoneCat/">评论</a>
@@ -549,7 +539,7 @@
       
     </div>
     <footer class="article-footer">
-  <a data-url="http://oliver34.github.io/2016/08/19/第一篇/" data-id="civur817g000jhghhru6557s8" class="article-share-link">分享</a>
+  <a data-url="http://oliver34.github.io/2016/08/19/第一篇/" data-id="civurgnmi000hl8hhwvr7nb1n" class="article-share-link">分享</a>
 
       
         <a href="http://oliver34.github.io/2016/08/19/第一篇/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2016/08/19/第一篇/">评论</a>
