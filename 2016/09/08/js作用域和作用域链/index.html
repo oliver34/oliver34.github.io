@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="oliver34">
+    
+    <title>
+        
+            js作用域和作用域链 |
+        
+        莫等闲白了少年头
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"oliver34.io","root":"/","language":"zh"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"有志者，事竟成."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                莫等闲白了少年头
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">js作用域和作用域链</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">oliver34</span>
+                        
+                            <span class="author-label">Trainee</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2016-09-08 16:29:48
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>857 Words</span>
+        </span>
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>对于js的 <strong>全局作用域</strong> 和 <strong>作用域链</strong> 的相关概念一直很模糊，最近认真学习了一番。</p>
+<p>对于大多数语言来说，作用域都分为<strong>全局作用域</strong> 和 <strong>局部作用域</strong> ，js亦是如此。</p>
+<ol>
+<li>全局作用域<br>在代码中处处都能够访问到的对象即拥有全局作用域，主要有以下几种情形拥有全局作用域：</li>
+</ol>
+<ul>
+<li>最外层函数和申明在函数外部的变量拥有全局作用域</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> globalScope = <span class="string">&quot;全局变量&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outerFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> localScope = <span class="string">&quot;局部变量&quot;</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">innerFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(localScope);</span><br><span class="line">  &#125;</span><br><span class="line">  innerFun();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(globalScope);<span class="comment">//&quot;全局变量&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(localScope);<span class="comment">//Uncaught ReferenceError: localScope is not defined</span></span><br><span class="line">outerFun();<span class="comment">//&quot;局部变量&quot;</span></span><br><span class="line">innerFun();<span class="comment">//Uncaught ReferenceError: innerFun is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p><code>globalScope</code> 和 <code>outerFun</code>都是定义在最外层的，所以拥有全局作用域。而 <code>localScope</code> 和 <code>innerFun</code>都是定义在函数内部的，所以访问会出错。</p>
+<ul>
+<li><p>非严格模式下所有未定义直接赋值的变量自动变为全局变量，拥有全局作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outerFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> localScope = <span class="string">&quot;局部变量&quot;</span>;</span><br><span class="line">  globalScope = <span class="string">&quot;全局变量&quot;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(localScope);</span><br><span class="line">&#125;</span><br><span class="line">outerFun();<span class="comment">//&quot;局部变量&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(globalScope);<span class="comment">//&quot;全局变量&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(localScope);<span class="comment">//Uncaught ReferenceError: localScope is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>当然前提这不是在 严格模式(use strict) 下,如果在严格模式下，未声明变量就赋值是会报错的。</p>
+</li>
+<li><p>所有window对象的属性拥有全局作用域<br>通常情况下window对象的内置属性都拥有全局作用域，下面是一下常用的window的属性</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>closed</td>
+<td>返回窗口是否已被关闭。</td>
+</tr>
+<tr>
+<td>history</td>
+<td>对 History 对象的只读引用。请参数 History 对象。</td>
+</tr>
+<tr>
+<td>location</td>
+<td>用于窗口或框架的 Location 对象。</td>
+</tr>
+<tr>
+<td>name</td>
+<td>设置或返回窗口的名称。</td>
+</tr>
+<tr>
+<td>screenLeft screenTop screenX screenY</td>
+<td>只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>局部作用域<br>局部作用域又可以分为 函数作用域 和 块级作用域</li>
+</ol>
+<p>函数作用域：变量在定义的函数内及嵌套的子函数内处处可见；<br>块级函数域：变量在离开定义的块级代码后马上被回收。</p>
+<ul>
+<li>函数作用域<br>先看一段代码：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">&#x27;global&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(scope);<span class="comment">//undefined</span></span><br><span class="line">	<span class="keyword">var</span> scope=<span class="string">&quot;local&quot;</span> ;</span><br><span class="line">	<span class="built_in">console</span>.log(scope);<span class="comment">//local</span></span><br><span class="line">&#125;;</span><br><span class="line">getScope();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>上面那段代码输出的结果是 <code>undefined</code> 和 <code>local</code>，第二个结果没有疑问，但是为什么第一个不是输出 <code>global</code>?不是定义了全局变量 <code>var scope = &#39;global&#39;</code>为什么还会 undefined 呢？<br>这就是函数作用域 变量在定义的函数内及嵌套的子函数内处处可见 ，上面的代码在函数 getScope内部定义scope的时候，实际上进行了 变量提升(hoisting) ,所以上面的代码是与下面的代码等价的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">&#x27;global&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> scope;</span><br><span class="line">	<span class="built_in">console</span>.log(scope);<span class="comment">//undefined</span></span><br><span class="line">	scope=<span class="string">&quot;local&quot;</span> ;</span><br><span class="line">	<span class="built_in">console</span>.log(scope);<span class="comment">//local</span></span><br><span class="line">&#125;;</span><br><span class="line">getScope();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>块级作用域<br>js中依然存在块级作用域，比如 let 定义的变量遵从块级作用域，不会提升，不会在整个函数域内起作用。</li>
+</ul>
+<p>2.作用域链</p>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="http://blog.csdn.net/yueguanghaidao/article/details/9568071" >Js作用域与作用域链详解<i class="fas fa-external-link-alt"></i></a> </p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html" >JavaScript 开发进阶：理解 JavaScript 作用域和作用域链<i class="fas fa-external-link-alt"></i></a> </p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://blog.csdn.net/huangjq36sysu/article/details/51085674" >js的函数作用域跟块级作用域<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2016/10/31/%E6%9E%84%E5%BB%BAreact%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">gulp+browserify 构建react开发环境</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">oliver34</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.2</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>
