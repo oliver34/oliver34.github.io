@@ -23,7 +23,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"oliver34.io","root":"/","language":"zh"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"有志者，事竟成."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"有志者，事竟成."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -149,7 +149,7 @@
         
             <div class="article-header">
                 <div class="avatar">
-                    <img src="/images/avatar.jpg">
+                    <img src="/images/avatar.png">
                 </div>
                 <div class="info">
                     <div class="author">
@@ -180,7 +180,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>938 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>939 Words</span>
         </span>
     
     
@@ -193,20 +193,26 @@
         
 
         <div class="article-content markdown-body">
-            <p>最近准备学习一下前端火热的框架—react ，好扩充一下自己增加一些相关经验。<br>因为之前学过一点 <code>gulp</code> 又听说前端构建 <code>browserify</code>和<code>gulp</code>更配哦，虽说最近webpack最近风头正热，但是前端变化那么快，一味的追求最新技术反而会适得其反，适合自己的才是最好的。所以准备用<code>gulp+browserify</code>的组合搭建（前者进行打包，后者进行任务构建）。</p>
+            <p>最近准备学习一下前端火热的框架—react ，好扩充一下自己增加一些相关经验。<br>
+因为之前学过一点 <code>gulp</code> 又听说前端构建 <code>browserify</code>和<code>gulp</code>更配哦，虽说最近webpack最近风头正热，但是前端变化那么快，一味的追求最新技术反而会适得其反，适合自己的才是最好的。所以准备用<code>gulp+browserify</code>的组合搭建（前者进行打包，后者进行任务构建）。</p>
 <ol>
-<li>安装gulp和browerify  </li>
+<li>安装gulp和browerify</li>
 </ol>
 <ul>
-<li><p>全局安装gulp<br>命令行输入 <code>npm install –g gulp</code>，然后<code>gulp -v</code>查看gulp版本信息，如果出现</p>
+<li>全局安装gulp<br>
+命令行输入 <code>npm install –g gulp</code>，然后<code>gulp -v</code>查看gulp版本信息，如果出现</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[16:01:50] CLI version 3.9.1</span><br><span class="line">[16:01:50] Local version 3.9.1</span><br></pre></td></tr></table></figure>
 <p>证明已经安装好，只有在全局安装好gulp才能执行gulp命令。</p>
-</li>
-<li><p>项目本地安装gulp、browerify<br>进入项目根目录 n<code>pm install --save-dev gulp browerify</code><br>这里<code>--save-dev</code>是为了把依赖信息保存到package.json的 devDependencies里，这样项目协作的时候只需要提交<code>package.json</code>,到时候其他人更新以后直接n<code>pm install</code>就可以下载依赖了。<br>由于npm镜像在国外，下载缓慢，容易出现一些不知道的错误，采用cnpm可以下的更快（据说最近火热的yarn更牛逼）</p>
-</li>
+<ul>
+<li>项目本地安装gulp、browerify<br>
+进入项目根目录 n<code>pm install --save-dev gulp browerify</code><br>
+这里<code>--save-dev</code>是为了把依赖信息保存到package.json的 devDependencies里，这样项目协作的时候只需要提交<code>package.json</code>,到时候其他人更新以后直接n<code>pm install</code>就可以下载依赖了。<br>
+由于npm镜像在国外，下载缓慢，容易出现一些不知道的错误，采用cnpm可以下的更快（据说最近火热的yarn更牛逼）</li>
 </ul>
 <ol start="2">
-<li>安装其他依赖<br>除了上述两个基本的工具，还需要安装其他辅助工具</li>
+<li>安装其他依赖<br>
+除了上述两个基本的工具，还需要安装其他辅助工具</li>
 </ol>
 <ul>
 <li><code>gulp-less</code>: 将less编译成对应的css;</li>
@@ -224,17 +230,25 @@
 <li>编写gulpfile.js</li>
 </ol>
 <ul>
-<li>首先引入模块：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>), </span><br><span class="line">  less = <span class="built_in">require</span>(<span class="string">&quot;gulp-less&quot;</span>),</span><br><span class="line">  browserify = <span class="built_in">require</span>(<span class="string">&quot;browserify&quot;</span>), </span><br><span class="line">  browserSync = <span class="built_in">require</span>(<span class="string">&quot;browser-sync&quot;</span>).create(),</span><br><span class="line">  shim = <span class="built_in">require</span>(<span class="string">&#x27;browserify-shim&#x27;</span>),</span><br><span class="line">  babelify = <span class="built_in">require</span>(<span class="string">&quot;babelify&quot;</span>),</span><br><span class="line">  source = <span class="built_in">require</span>(<span class="string">&quot;vinyl-source-stream&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> reload = browserSync.reload;</span><br></pre></td></tr></table></figure></li>
-<li>然后编写任务：<br>less-css任务：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">&quot;less&quot;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  gulp.src(<span class="string">&quot;src/less/index.less&quot;</span>)</span><br><span class="line">    .pipe(less())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">&quot;./css&quot;</span>))</span><br><span class="line">    .pipe(reload(&#123;<span class="attr">stream</span>: <span class="literal">true</span>&#125;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-react es6和jsx语法转化任务：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">&quot;jsx&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  browserify(<span class="string">&#x27;src/main.js&#x27;</span>)</span><br><span class="line">    .transform(babelify, &#123;</span><br><span class="line">      presets: [<span class="string">&#x27;es2015&#x27;</span>, <span class="string">&#x27;react&#x27;</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    .transform(shim)</span><br><span class="line">    .bundle()</span><br><span class="line">    .pipe(source(<span class="string">&#x27;bundle.js&#x27;</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">&#x27;js&#x27;</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-为了让任务自动执行，实现真正自动化解放双手，当修改产生用<code>browser-sync</code>结合gulp的watch来自动刷新页面（这里只是用到它的一小部分功能，它还有许多其他神奇功能可以探索）</li>
+<li>首先引入模块：</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>), </span><br><span class="line">  less = <span class="built_in">require</span>(<span class="string">&quot;gulp-less&quot;</span>),</span><br><span class="line">  browserify = <span class="built_in">require</span>(<span class="string">&quot;browserify&quot;</span>), </span><br><span class="line">  browserSync = <span class="built_in">require</span>(<span class="string">&quot;browser-sync&quot;</span>).create(),</span><br><span class="line">  shim = <span class="built_in">require</span>(<span class="string">&#x27;browserify-shim&#x27;</span>),</span><br><span class="line">  babelify = <span class="built_in">require</span>(<span class="string">&quot;babelify&quot;</span>),</span><br><span class="line">  source = <span class="built_in">require</span>(<span class="string">&quot;vinyl-source-stream&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> reload = browserSync.reload;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后编写任务：<br>
+less-css任务：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">&quot;less&quot;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  gulp.src(<span class="string">&quot;src/less/index.less&quot;</span>)</span><br><span class="line">    .pipe(less())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">&quot;./css&quot;</span>))</span><br><span class="line">    .pipe(reload(&#123;<span class="attr">stream</span>: <span class="literal">true</span>&#125;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>react es6和jsx语法转化任务：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">&quot;jsx&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  browserify(<span class="string">&#x27;src/main.js&#x27;</span>)</span><br><span class="line">    .transform(babelify, &#123;</span><br><span class="line">      presets: [<span class="string">&#x27;es2015&#x27;</span>, <span class="string">&#x27;react&#x27;</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    .transform(shim)</span><br><span class="line">    .bundle()</span><br><span class="line">    .pipe(source(<span class="string">&#x27;bundle.js&#x27;</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">&#x27;js&#x27;</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>为了让任务自动执行，实现真正自动化解放双手，当修改产生用<code>browser-sync</code>结合gulp的watch来自动刷新页面（这里只是用到它的一小部分功能，它还有许多其他神奇功能可以探索）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;browser-sync&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  browserSync.init(&#123;</span><br><span class="line">    files: <span class="string">&quot;**&quot;</span>,  </span><br><span class="line">      server: &#123;  </span><br><span class="line">        baseDir: <span class="string">&quot;./&quot;</span>  </span><br><span class="line">      &#125;  </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">&#x27;watch&#x27;</span>, [<span class="string">&#x27;browser-sync&#x27;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.watch(<span class="string">&quot;src/main.js&quot;</span>,[<span class="string">&quot;jsx&quot;</span>]);</span><br><span class="line">  gulp.watch(<span class="string">&quot;src/less/index.less&quot;</span>,[<span class="string">&quot;less&quot;</span>]);</span><br><span class="line">  gulp.watch(<span class="string">&quot;src/main.js&quot;</span>).on(<span class="string">&#x27;change&#x27;</span>, reload)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>最后输入<code>gulp watch</code>就可以自动运行，修改相应<code>jsx</code>和less就会自动刷新页面了。</p>
 <blockquote>
 <p>参考资料</p>
 </blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="http://syaning.com/2015/11/09/gulp-react-task-build/?utm_source=tuicool&utm_medium=referral" >使用gulp进行React任务的构建<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="http://www.tuicool.com/articles/iEnumu" >Gulp系列教程：监听改变<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://browsersync.io/docs/gulp/" >browsersync官方文档<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://syaning.com/2015/11/09/gulp-react-task-build/?utm_source=tuicool&amp;utm_medium=referral" >使用gulp进行React任务的构建<i class="fas fa-external-link-alt"></i></a><br>
+<a class="link"   target="_blank" rel="noopener" href="http://www.tuicool.com/articles/iEnumu" >Gulp系列教程：监听改变<i class="fas fa-external-link-alt"></i></a><br>
+<a class="link"   target="_blank" rel="noopener" href="https://browsersync.io/docs/gulp/" >browsersync官方文档<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
