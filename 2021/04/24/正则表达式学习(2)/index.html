@@ -9,7 +9,7 @@
     
     <title>
         
-            Archive: 2016 |
+            正则表达式学习(2) |
         
         莫等闲白了少年头
     </title>
@@ -66,7 +66,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 ARCHIVES
@@ -110,7 +110,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">ARCHIVES</a>
                 </li>
             
@@ -140,83 +140,160 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">正则表达式学习(2)</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">oliver34</span>
+                        
+                            <span class="author-label">Trainee</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-04-24 15:19:44
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">[4]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/04/24/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0(2)/"
-                        >正则表达式学习(2)</a>
-                        <span class="article-date">04-24</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/04/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0(1)/"
-                        >正则表达式学习(1)</a>
-                        <span class="article-date">04-18</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/04/11/%E7%94%A8JS%E5%AE%9E%E7%8E%B0%E5%90%84%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(%E4%B8%8B)/"
-                        >用JS实现各大排序算法(下)</a>
-                        <span class="article-date">04-11</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/04/11/%E7%94%A8JS%E5%AE%9E%E7%8E%B0%E5%90%84%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(%E4%B8%8A)/"
-                        >用JS实现各大排序算法(上)</a>
-                        <span class="article-date">04-11</span>
-                    </li>
-                
-            </ul>
-        </section>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2016</span>
-                <span class="archive-year-post-count">[3]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2016/11/23/AngularJS%E4%B9%8B$watch/"
-                        >AngularJS之$watch</a>
-                        <span class="article-date">11-23</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2016/10/31/%E6%9E%84%E5%BB%BAreact%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"
-                        >gulp+browserify 构建react开发环境</a>
-                        <span class="article-date">10-31</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2016/09/08/js%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/"
-                        >js作用域和作用域链</a>
-                        <span class="article-date">09-08</span>
-                    </li>
-                
-            </ul>
-        </section>
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>495 Words</span>
+        </span>
+    
+    
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="断言">断言</h3>
+<p><em>即对匹配到的文本位置有要求</em></p>
+<ul>
+<li>单词边界<br>
+<code>\b</code><br>
+例：<code>\b\w+\b</code>就可以精确匹配单词</li>
+<li>行的开始/结束
+<ul>
+<li><code>^</code> 表示开始</li>
+<li><code>$</code> 表示结尾</li>
+</ul>
+</li>
+<li>环视<br>
+即要求匹配部分的前面或后面要满足（或不满足）某种规则<br>
+<img src="https://static001.geekbang.org/resource/image/00/dd/00e823943baa33cd8a5e4690cfe44edd.png"/><br>
+<em>左尖括号代表看左边，没有尖括号是看右边，感叹号是非的意思</em></li>
+</ul>
+<h3 id="转义">转义</h3>
+<ul>
+<li>转义字符<br>
+<img src="https://static001.geekbang.org/resource/image/03/35/034b3619dab627fc96b85ac8de004b35.jpg"/></li>
+<li>字符串转义和正则转义
+<ul>
+<li>正则中是使用反斜杠进行转义的 例：<code>\\d</code></li>
+<li>括号转义 <code>[]</code>和<code>&#123;&#125;</code>只需转义开括号，<code>()</code>两个都需要 例：<code>\&#123;1,3&#125;\[]\(\)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="常见正则问题和解决方案">常见正则问题和解决方案</h3>
+<ul>
+<li>匹配数字
+<ul>
+<li>用<code>\d</code>或<code>[0-9]</code>表示</li>
+<li>连续多个数字: <code>\d+</code>或<code>[0-9]+</code></li>
+<li>n位数据： <code>\d&#123;n&#125;</code></li>
+<li>至少n位： <code>\d&#123;n, &#125;</code></li>
+<li>m-n位： <code>\d&#123;m, n&#125;</code></li>
+</ul>
+</li>
+<li>匹配正数，负数和小数
+<ul>
+<li>匹配正数、负数和小数： <code>[-+]?\d+(?:\.\d+)?</code></li>
+<li>非负整数(0和正整数)： <code>[1-9]\d*|0</code></li>
+<li>非正整数(0和负整数)： <code>-[1-9]\d*|0</code></li>
+</ul>
+</li>
+<li>浮点数
+<ul>
+<li>负浮点数： <code>-\d(?:\.\d+)?</code></li>
+<li>正浮点数： <code>+?(?:\d+(?:\.\d+)?|\.\d+)</code></li>
+</ul>
+</li>
+<li>十六进制数： <code>[0-9A-Fa-f]+</code></li>
+<li>手机号码
+<ul>
+<li>限制前两位：<code>1[3-9]\d&#123;9&#125;</code></li>
+<li>限制前三位：<code>1(?:3\d|4[5-9]|5[0-35-9]|6[2567]|7[0-8]|8\d|9[1389])\d&#123;8&#125;</code></li>
+</ul>
+</li>
+<li>身份证号码
+<ul>
+<li>规则：我国的身份证号码是分两代的，第一代是 15 位，第二代是 18 位。如果是 18 位，最后一位可以是 X（或 x），两代开头都不能是 0</li>
+<li>写法：<code>[1-9]\d&#123;14&#125;(\d\d[0-9Xx])</code></li>
+</ul>
+</li>
+<li>邮政编码(6位数字)：<code>(?&lt;!\d)\d&#123;6&#125;(?!\d)</code></li>
+<li>qq号：<code>[1-9][0-9]&#123;4,9&#125;</code></li>
+<li>中文字符
+<ul>
+<li>规则：通过码值查找，中文的范围是 4E00 - 9FFF 之间</li>
+<li>写法：<code>[\u4E00-\u9FFF]</code></li>
+</ul>
+</li>
+<li>IPv4地址：<code>\d&#123;1,3&#125;(\.\d&#123;1,3&#125;)&#123;3&#125;</code></li>
+<li>日期和时间
+<ul>
+<li>yyyy-mm-dd: <code>\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;</code></li>
+</ul>
+</li>
+<li>邮箱： <code>[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+</code></li>
+</ul>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/04/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0(1)/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">正则表达式学习(1)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -244,6 +321,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -290,6 +384,14 @@
     </div>
 
     
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">断言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">转义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%AD%A3%E5%88%99%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">常见正则问题和解决方案</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
     <div class="image-viewer-container">
     <img src="">
@@ -325,6 +427,14 @@
 
 
 <div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
     
 </div>
 
