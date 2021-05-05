@@ -9,7 +9,7 @@
     
     <title>
         
-            标签: Angularjs |
+            Reat源码学习(1) --- React 16的架构 |
         
         莫等闲白了少年头
     </title>
@@ -82,7 +82,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/tags"
                             >
                                 标签
@@ -120,7 +120,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/tags">标签</a>
                 </li>
             
@@ -140,42 +140,95 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="tag-container">
-        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;Angularjs
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Reat源码学习(1) --- React 16的架构</span>
         </div>
-        <div class="tag-post-list">
-            
-<div class="archive-list-container">
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">oliver34</span>
+                        
+                            <span class="author-label">Engineer</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-05-05 14:07:55
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2016</span>
-                <span class="archive-year-post-count">[1]</span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>254 字</span>
+        </span>
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
             </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2016/11/23/AngularJS%E4%B9%8B$watch/"
-                        >AngularJS之$watch</a>
-                        <span class="article-date">11-23</span>
-                    </li>
-                
-            </ul>
-        </section>
-    
-</div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="React16的架构">React16的架构</h3>
+<ul>
+<li>异步可中断更新<br>
+更新在执行过程中可能会被打断（浏览器时间分片用尽或有更高优任务插队），当可以继续执行时恢复之前执行的中间状态</li>
+<li>架构分层
+<ol>
+<li>Scheduler（调度器）：调度任务的优先级，优先级高的进入<strong>Reconciler</strong></li>
+<li>Reconciler（协调器）：负责找出变化的组件</li>
+<li>Renderer（渲染器）：负责将变化的组件渲染到页面上</li>
+</ol>
+</li>
+<li>Fiber的含义
+<ol>
+<li>架构层面，React15的<code>Reconciler</code>采用递归方式执行，数据保存在递归调用栈中，所以被称为<code>Stack Reconciler</code>。React16的Reconciler基于Fiber节点实现，被称为<code>Fiber Reconciler</code>。</li>
+<li>从静态数据结构来说，每个<code>Fiber 节点</code>对应一个<code>React Element</code> 保存了改组件的类型，对应的DOM节点等信息；</li>
+<li>从动态工作单元来说，每个Fiber节点保存了本次更新中该组件改变的状态、要执行的工作（需要被删除/被插入页面中/被更新…）</li>
+</ol>
+</li>
+</ul>
 
         </div>
-    </div>
 
-    <div class="tag-paginator">
-        <div class="paginator">
-    
+        
 
-    
-</div>
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/04/24/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0(2)/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">正则表达式学习(2)</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
 
+        
     </div>
 </div>
 
@@ -206,6 +259,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -252,6 +322,14 @@
     </div>
 
     
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React16%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">React16的架构</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
     <div class="image-viewer-container">
     <img src="">
@@ -287,6 +365,14 @@
 
 
 <div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
     
 </div>
 
